@@ -5,7 +5,7 @@
   "description": "A small calculator for practicing software development practices",
   "type": "module",
   "scripts": {
-    "build": "node --check src/calculator.js",
+    "build": "node --check src/calculator.js && node --check src/cli.js",
     "lint": "eslint .",
     "test": "node --test"
   },
