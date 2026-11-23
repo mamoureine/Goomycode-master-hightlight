@@ -1,26 +1,25 @@
-# Short Reflection
+# Short Reflection Report
 
-Learning Git, CI, and QA tools meant keeping several new ideas straight at once.
-The most confusing Git part was understanding how the working tree, staging
-area, commits, and branches are different. A merge conflict can also look
-intimidating at first: Git marks the competing lines, but the developer still
-has to decide which result is correct and commit the resolution. Practicing on
-a small project makes it safer to learn these steps before working on a larger
-team project.
+At first, the hardest part of learning Git was understanding that saving a
+file, staging it, committing it, and pushing it are separate steps. I also had
+to pay attention to which branch I was on. Creating a feature branch helped me
+make changes without immediately affecting the main version. The idea of a
+merge conflict seemed intimidating, but conflict markers make it clear which
+lines need a decision. I learned that resolving a conflict means understanding
+both changes, not simply choosing one automatically.
 
-The CI pipeline streamlines development by running the same checks whenever a
-change is pushed or a pull request is opened. Instead of relying on someone to
-remember every command, the workflow installs the project tools, checks style,
-runs unit tests, and verifies that the JavaScript files parse correctly. A
-failed check points the team to a problem before the change is merged. GitHub
-also displays the result with the commit or pull request, while notification
-delivery depends on account settings.
+The CI pipeline made checking changes more consistent. Instead of relying on
+someone to remember every command, GitHub Actions runs the build check, linter,
+and tests for each push to the main branch and each pull request. A failed
+check points the team to a problem before a change is merged. This saves time
+and gives everyone the same feedback, although a passing pipeline does not
+replace reading the code or trying the program.
 
-Version control improves collaboration because each change has a history, and
-branches let students work on separate features without overwriting one
-another's work. Pull requests provide a place to discuss proposed changes
-before merging. Tests and linting make that collaboration more reliable: tests
-check that the calculator's operations behave as expected, and linting catches
-style and common code issues early. Together, these practices make changes
-easier to understand, review, and fix. The next step is to connect this project
-to a shared GitHub repository and complete a real peer review.
+Version control and QA also make teamwork safer. Small commits explain how a
+feature developed, branches let classmates work independently, and pull
+requests create a place to ask questions before combining work. Tests catch
+mistakes in arithmetic and command-line input, while the linter catches
+inconsistent style and common errors. Peer feedback can identify confusing
+code that automated tools miss. I would improve the process by writing tests
+alongside each feature and asking reviewers specific questions. These habits
+make the project easier to understand, verify, and maintain as a team.

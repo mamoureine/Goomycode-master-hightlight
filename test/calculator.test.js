@@ -1,32 +1,23 @@
-import assert from "node:assert/strict";
-import test from "node:test";
+const assert = require("node:assert/strict");
+const test = require("node:test");
+const { add, subtract, multiply, divide } = require("../src/calculator");
 
-import { calculate } from "../src/calculator.js";
-
-test("calculate handles all supported operations", () => {
-  assert.equal(calculate(8, "+", 4), 12);
-  assert.equal(calculate(8, "-", 4), 4);
-  assert.equal(calculate(8, "*", 4), 32);
-  assert.equal(calculate(8, "/", 4), 2);
+test("supports the four arithmetic operations", () => {
+  assert.equal(add(8, 5), 13);
+  assert.equal(subtract(8, 5), 3);
+  assert.equal(multiply(8, 5), 40);
+  assert.equal(divide(10, 4), 2.5);
 });
 
-test("calculate rejects unsupported operators", () => {
-  assert.throws(() => calculate(2, "^", 3), {
-    name: "TypeError",
-    message: "Unsupported operator: ^",
-  });
+test("rejects values that are not finite numbers", () => {
+  assert.throws(() => add("8", 5), TypeError);
+  assert.throws(() => subtract(Number.NaN, 1), TypeError);
+  assert.throws(() => multiply(1, Number.POSITIVE_INFINITY), TypeError);
 });
 
-test("calculate rejects division by zero", () => {
-  assert.throws(() => calculate(2, "/", 0), {
+test("rejects division by zero", () => {
+  assert.throws(() => divide(5, 0), {
     name: "RangeError",
-    message: "Cannot divide by zero.",
-  });
-});
-
-test("calculate rejects non-finite inputs", () => {
-  assert.throws(() => calculate(Number.NaN, "+", 3), {
-    name: "TypeError",
-    message: "Both inputs must be finite numbers.",
+    message: "Cannot divide by zero",
   });
 });

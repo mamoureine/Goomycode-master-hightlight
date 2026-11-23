@@ -1,19 +1,32 @@
-#!/usr/bin/env node
+const { add, subtract, multiply, divide } = require("./calculator");
 
-import { calculate } from "./calculator.js";
+const operations = { add, subtract, multiply, divide };
 
-const [leftText, operator, rightText] = process.argv.slice(2);
-const left = Number(leftText);
-const right = Number(rightText);
+function run(args, output = console.log, reportError = console.error) {
+  const [operation, leftText, rightText, ...extraArgs] = args;
+  const calculate = Object.hasOwn(operations, operation)
+    ? operations[operation]
+    : undefined;
 
-if (leftText === undefined || rightText === undefined || operator === undefined) {
-  console.error("Usage: node src/cli.js <number> <+|-|*|/> <number>");
-  process.exitCode = 1;
-} else {
+  if (!calculate || !leftText || !rightText || extraArgs.length > 0) {
+    reportError("Usage: node src/cli.js <add|subtract|multiply|divide> <number> <number>");
+    return 1;
+  }
+
+  const left = Number(leftText);
+  const right = Number(rightText);
+
   try {
-    console.log(calculate(left, operator, right));
+    output(String(calculate(left, right)));
+    return 0;
   } catch (error) {
-    console.error(error.message);
-    process.exitCode = 1;
+    reportError(error.message);
+    return 1;
   }
 }
+
+if (require.main === module) {
+  process.exitCode = run(process.argv.slice(2));
+}
+
+module.exports = { run };

@@ -1,22 +1,24 @@
 # QA Report
 
-## Unit tests
+## Automated tests
 
-`test/calculator.test.js` checks all four supported arithmetic operations,
-rejects an unsupported operator and division by zero, and validates non-finite
-inputs. `test/cli.test.js` verifies successful command-line output and that
-division by zero is reported as an error. All tests pass locally and in
-GitHub Actions.
+The unit tests in `test/calculator.test.js` exercise addition, subtraction,
+multiplication, division, rejection of non-finite/non-numeric values, and
+division by zero. The CLI tests in `test/cli.test.js` check successful output,
+an unsupported operation, invalid numeric input, and division by zero. Run
+them with `npm test`.
 
 ## Linter
 
-The project uses ESLint with rules for unused variables, duplicate imports,
-unreachable code, and constant binary expressions. Initial local result:
-`npm run lint` passes with no reported issues.
+ESLint is configured to report unused variables and selected common JavaScript
+errors, while enforcing consistent quotes and semicolons. `npm run lint`
+completed without findings in the local verification run.
+
+The local build check and all six tests also passed.
 
 ## Code review
 
-No peer review has been conducted yet because this workspace is not connected to
-a shared GitHub repository. To complete this section, open a pull request,
-request a classmate's review, and record the pull request link, feedback, and
-any resulting changes here.
+No peer pull-request reviews have been conducted as part of creating this
+starter project. Students should record each real review here, including the
+pull request, reviewer feedback, and changes made. Do not report a review until
+a classmate has actually completed it.

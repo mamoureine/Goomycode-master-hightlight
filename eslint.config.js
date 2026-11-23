@@ -1,19 +1,26 @@
-export default [
+const globals = require("globals");
+
+module.exports = [
+  {
+    ignores: ["node_modules/**", "coverage/**"],
+  },
   {
     files: ["**/*.js"],
     languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: "module",
+      ecmaVersion: "latest",
+      sourceType: "commonjs",
       globals: {
-        console: "readonly",
-        process: "readonly",
+        ...globals.node,
       },
     },
     rules: {
       "no-constant-binary-expression": "error",
       "no-duplicate-imports": "error",
       "no-unreachable": "error",
-      "no-unused-vars": "error",
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+      "prefer-const": "error",
+      "quotes": ["error", "double", { avoidEscape: true }],
+      "semi": ["error", "always"],
     },
   },
 ];

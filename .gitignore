@@ -1,5 +1,4 @@
 node_modules/
 coverage/
-__pycache__/
-*.py[cod]
-*.egg-info/
+.DS_Store
+npm-debug.log*
