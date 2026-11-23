@@ -4,13 +4,15 @@
 
 `test/calculator.test.js` checks all four supported arithmetic operations,
 rejects an unsupported operator and division by zero, and validates non-finite
-inputs. The same test suite runs locally and in GitHub Actions.
+inputs. `test/cli.test.js` verifies successful command-line output and that
+division by zero is reported as an error. All tests pass locally and in
+GitHub Actions.
 
 ## Linter
 
 The project uses ESLint with rules for unused variables, duplicate imports,
 unreachable code, and constant binary expressions. Initial local result:
-`npm run lint` passed with no reported issues.
+`npm run lint` passes with no reported issues.
 
 ## Code review
 
